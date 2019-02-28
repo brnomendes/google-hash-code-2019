@@ -14,14 +14,14 @@ if __name__ == "__main__":
     slides = list()
     last_tags = None
 
-    for id in range(0, len(dataset)):
+    for id in range(0, len(original_dataset)):
         if dataset[id]['orientation'] == 'H':
             slides.append([id])
             last_tags = dataset[id]['tags']
             dataset.pop(id)
             break
 
-    for id in range(0, len(dataset)):
+    for id in range(0, len(original_dataset)):
         if id not in dataset:
             continue
 
@@ -31,9 +31,10 @@ if __name__ == "__main__":
 
     while len(dataset) > 0:
         last_slide = slides[-1][0]
+        print(last_slide)
 
         hasCombination = False
-        for id in range(0, len(dataset)):
+        for id in range(0, len(original_dataset)):
             if id not in dataset or last_slide == id:
                 continue
 
@@ -45,10 +46,16 @@ if __name__ == "__main__":
                 break
 
         if not hasCombination:
-            r = list(dataset.keys())[0]
-            slides.append([r])
-            last_tags = dataset[r]['tags']
-            dataset.pop(r)
+            r = None
+            for id in range(0, len(original_dataset)):
+                if id in dataset and dataset[id]['orientation'] == 'H':
+                    r = id
+                    break
+
+            if r:
+                slides.append([r])
+                last_tags = dataset[r]['tags']
+                dataset.pop(r)
 
     file_name_split = file_name.split('.')
     Common.write_result(slides, f'{".".join(file_name_split[:-1])}-out.{file_name_split[-1]}')
