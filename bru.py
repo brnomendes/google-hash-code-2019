@@ -10,7 +10,7 @@ if __name__ == "__main__":
     dataset = Common.read_input_file(file_name)
     original_dataset = copy.deepcopy(dataset)
 
-    verticals = set()
+    verticals = list()
     slides = list()
     last_tags = None
 
@@ -26,7 +26,7 @@ if __name__ == "__main__":
             continue
 
         if dataset[id]['orientation'] == 'V':
-            verticals.add(id)
+            verticals.append(id)
             dataset.pop(id)
 
     while len(dataset) > 0:
@@ -49,6 +49,10 @@ if __name__ == "__main__":
             slides.append([r])
             last_tags = dataset[r]['tags']
             dataset.pop(r)
+
+    for i in range(0, len(verticals), 2):
+        if i + 1 < len(verticals):
+            slides.append([verticals[i], verticals[i+1]])
 
     file_name_split = file_name.split('.')
     Common.write_result(slides, f'{".".join(file_name_split[:-1])}-out.{file_name_split[-1]}')
