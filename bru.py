@@ -1,10 +1,11 @@
+import sys
 import copy
 import random
 
 from common import Common
 
 if __name__ == "__main__":
-    file_name = 'data/b_lovely_landscapes.txt'
+    file_name = sys.argv[1]
 
     dataset = Common.read_input_file(file_name)
     original_dataset = copy.deepcopy(dataset)
@@ -17,6 +18,8 @@ if __name__ == "__main__":
         if dataset[id]['orientation'] == 'H':
             slides.append([id])
             last_tags = dataset[id]['tags']
+            dataset.pop(id)
+            break
 
     for id in range(0, len(dataset)):
         if id not in dataset:
