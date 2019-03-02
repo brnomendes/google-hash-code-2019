@@ -20,10 +20,10 @@ Our solution to Online Qualification Round of Google Hash Code 2019
    - Score: 380161
 
 **Members**:
- - Bruno Mendes @brnomendes
- - Daniel Valerio @WaGjUb
- - Henrique Pinheiro @hensou
- - Vitório Miguel @hydrocat
+ - Bruno Mendes [@brnomendes](https://github.com/brnomendes)
+ - Daniel Valerio [@WaGjUb](https://github.com/WaGjUb)
+ - Henrique Pinheiro [@hensou](https://github.com/hensou)
+ - Vitório Miguel [@hydrocat](https://github.com/hydrocat)
 
 **How to Run**:
 ```bash
